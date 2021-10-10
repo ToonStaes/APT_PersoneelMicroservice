@@ -15,6 +15,14 @@ jobs:
         with:
           java-version: 11
           
+      - name: Start MariaDB
+        uses: getong/mariadb-action@v1.1
+        with:
+          host port: 3308
+          mysql root password: ${{ secrets.MARIADB_ROOT_PASS }}
+          mysql user: root
+          mysql password: ${{ secrets.MARIADB_PASS }}
+          
       - name: Build, test and package project
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
