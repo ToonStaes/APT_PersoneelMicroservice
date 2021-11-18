@@ -10,4 +10,9 @@ class AptPersoneelMicroserviceApplicationTests {
     void contextLoads() {
     }
 
+    @Test
+    public void applicationContextTest() {
+        AptPersoneelMicroserviceApplication.main(new String[] {});
+    }
+
 }
