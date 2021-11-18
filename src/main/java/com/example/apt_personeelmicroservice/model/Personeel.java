@@ -1,6 +1,8 @@
 package com.example.apt_personeelmicroservice.model;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Entity
 public class Personeel {
@@ -13,6 +15,7 @@ public class Personeel {
         this.voornaam = voornaam;
         this.achternaam = achternaam;
         this.functie = functie;
+        setPersoneelsnummer();
     }
 
     @Id
@@ -64,13 +67,20 @@ public class Personeel {
         return personeelsnummer;
     }
 
-    @PostPersist
-    public void setPersoneelsnummer() {
+    private void setPersoneelsnummer() {
+        String personeelsnummer;
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+        Date date = new Date();
+        String datestring = formatter.format(date).toString();
+
         if (functie == Functie.Keuken){
-            this.personeelsnummer = "K" + this.id;
+            personeelsnummer = "K";
         } else {
-            this.personeelsnummer = "Z" + this.id;
+            personeelsnummer = "Z";
         }
 
+        personeelsnummer += datestring + this.voornaam.toUpperCase().charAt(0) + this.achternaam.toUpperCase().charAt(0);
+        this.personeelsnummer = personeelsnummer;
     }
 }
