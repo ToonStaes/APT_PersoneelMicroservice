@@ -15,7 +15,7 @@ public class Personeel {
         this.voornaam = voornaam;
         this.achternaam = achternaam;
         this.functie = functie;
-        setPersoneelsnummer();
+        this.personeelsnummer = getPersoneelsnummer();
     }
 
     @Id
@@ -39,31 +39,15 @@ public class Personeel {
         return voornaam;
     }
 
-    public void setVoornaam(String voornaam) {
-        this.voornaam = voornaam;
-    }
-
     public String getAchternaam() {
         return achternaam;
-    }
-
-    public void setAchternaam(String achternaam) {
-        this.achternaam = achternaam;
     }
 
     public Functie getFunctie() {
         return functie;
     }
 
-    public void setFunctie(Functie functie) {
-        this.functie = functie;
-    }
-
     public String getPersoneelsnummer() {
-        return personeelsnummer;
-    }
-
-    private void setPersoneelsnummer() {
         String personeelsnummer;
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
@@ -77,6 +61,6 @@ public class Personeel {
         }
 
         personeelsnummer += datestring + this.voornaam.toUpperCase().charAt(0) + this.achternaam.toUpperCase().charAt(0);
-        this.personeelsnummer = personeelsnummer;
+        return personeelsnummer;
     }
 }

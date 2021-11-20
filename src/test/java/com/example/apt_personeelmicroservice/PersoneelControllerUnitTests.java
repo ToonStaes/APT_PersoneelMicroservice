@@ -44,20 +44,17 @@ public class PersoneelControllerUnitTests {
     @Test
     public void givenPersoneel_whenGetPersoneelByPersoneelsnummer_thenReturnJsonPersoneel() throws Exception {
         Personeel personeelslid = new Personeel("Jan", "Polders", Functie.Zaal);
-        personeelslid.setVoornaam("Monique");
-        personeelslid.setAchternaam("Lombaerts");
-        personeelslid.setFunctie(Functie.Keuken);
 
-        String personeelsnummer = "K" + genereerDatestringVandaag() + "ML";
+        String personeelsnummer = "Z" + genereerDatestringVandaag() + "JP";
 
         given(personeelRepository.findPersoneelByPersoneelsnummer(personeelsnummer)).willReturn(personeelslid);
 
         mockMvc.perform(get("/personeel/{personeelsnummer}", personeelsnummer))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.voornaam", is("Monique")))
-                .andExpect(jsonPath("$.achternaam", is("Lombaerts")))
-                .andExpect(jsonPath("$.functie", is(Functie.Keuken.toString())));
+                .andExpect(jsonPath("$.voornaam", is("Jan")))
+                .andExpect(jsonPath("$.achternaam", is("Polders")))
+                .andExpect(jsonPath("$.functie", is(Functie.Zaal.toString())));
     }
 
     @Test
