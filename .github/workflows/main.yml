@@ -18,7 +18,7 @@ jobs:
       - name: Start MariaDB
         uses: getong/mariadb-action@v1.1
         with:
-          host port: 3308
+          host port: 3306
           mysql root password: ${{ secrets.MARIADB_ROOT_PASS }}
           mysql user: root
           mysql password: ${{ secrets.MARIADB_PASS }}
