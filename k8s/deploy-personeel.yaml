@@ -6,7 +6,7 @@ metadata:
     app: personeel-service
 spec:
   ports:
-    - port: 3308
+    - port: 3306
   selector:                       # Selects any Pod with labels `app=personeel-service,tier=mariadb`
     app: personeel-service
     tier: mariadb
@@ -40,7 +40,7 @@ spec:
             - name: MARIADB_DB_USERNAME
               value: "root"
           ports:
-            - containerPort: 3308       # The port that the container exposes
+            - containerPort: 3306       # The port that the container exposes
               name: mariadb
 ---
 apiVersion: apps/v1           # API version
