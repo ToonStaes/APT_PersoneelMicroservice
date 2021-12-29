@@ -39,7 +39,7 @@ class PersoneelControllerIntegrationTests {
     private String genereerDatestringVandaag(){
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
         Date date = new Date();
-        return formatter.format(date).toString();
+        return formatter.format(date);
     }
 
     @BeforeEach
