@@ -15,7 +15,7 @@ public class Personeel {
         this.voornaam = voornaam;
         this.achternaam = achternaam;
         this.functie = functie;
-        this.personeelsnummer = getPersoneelsnummer();
+        this.personeelsnummer = setPersoneelsnummer();
     }
 
     @Id
@@ -48,6 +48,10 @@ public class Personeel {
     }
 
     public String getPersoneelsnummer() {
+        return personeelsnummer;
+    }
+
+    public String setPersoneelsnummer() {
         String personeelsnummer;
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
