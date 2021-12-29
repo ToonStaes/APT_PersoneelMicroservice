@@ -11,7 +11,7 @@ class AptPersoneelMicroserviceApplicationTests {
     }
 
     @Test
-    public void applicationContextTest() {
+    void applicationContextTest() {
         AptPersoneelMicroserviceApplication.main(new String[] {});
     }
 

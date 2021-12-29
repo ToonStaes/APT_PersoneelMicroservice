@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class PersoneelControllerIntegrationTests {
+class PersoneelControllerIntegrationTests {
 
     @Autowired
     private MockMvc mockMvc;
@@ -59,7 +59,7 @@ public class PersoneelControllerIntegrationTests {
     private ObjectMapper mapper = new ObjectMapper();
 
     @Test
-    public void givenPersoneel_whenGetPersoneelByPersoneelsnummer_thenReturnJsonPersoneel() throws Exception {
+    void givenPersoneel_whenGetPersoneelByPersoneelsnummer_thenReturnJsonPersoneel() throws Exception {
         String personeelsnummer = "Z" + genereerDatestringVandaag() + "JP";
         mockMvc.perform(get("/personeel/{personeelsnummer}", personeelsnummer))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
@@ -70,7 +70,7 @@ public class PersoneelControllerIntegrationTests {
     }
 
     @Test
-    public void givenPersoneel_whenGetPersoneelByFunctie_thenReturnJsonPersoneel() throws Exception {
+    void givenPersoneel_whenGetPersoneelByFunctie_thenReturnJsonPersoneel() throws Exception {
 
         mockMvc.perform(get("/personeel/functie/{gekozenFunctie}", "Keuken"))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
@@ -85,7 +85,7 @@ public class PersoneelControllerIntegrationTests {
     }
 
     @Test
-    public void givenPersoneel_whenGetPersoneel_thenReturnJsonPersoneel() throws Exception {
+    void givenPersoneel_whenGetPersoneel_thenReturnJsonPersoneel() throws Exception {
 
         mockMvc.perform(get("/personeel"))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))

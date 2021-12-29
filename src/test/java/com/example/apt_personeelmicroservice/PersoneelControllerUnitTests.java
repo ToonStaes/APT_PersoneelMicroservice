@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class PersoneelControllerUnitTests {
+class PersoneelControllerUnitTests {
 
     @Autowired
     private MockMvc mockMvc;
@@ -42,7 +42,7 @@ public class PersoneelControllerUnitTests {
     }
 
     @Test
-    public void givenPersoneel_whenGetPersoneelByPersoneelsnummer_thenReturnJsonPersoneel() throws Exception {
+    void givenPersoneel_whenGetPersoneelByPersoneelsnummer_thenReturnJsonPersoneel() throws Exception {
         Personeel personeelslid = new Personeel("Jan", "Polders", Functie.Zaal);
 
         String personeelsnummer = "Z" + genereerDatestringVandaag() + "JP";
@@ -58,7 +58,7 @@ public class PersoneelControllerUnitTests {
     }
 
     @Test
-    public void givenPersoneel_whenGetPersoneelByFunctie_thenReturnJsonPersoneel() throws Exception {
+    void givenPersoneel_whenGetPersoneelByFunctie_thenReturnJsonPersoneel() throws Exception {
         Personeel personeelslid1 = new Personeel("Marlies", "Sjegers", Functie.Zaal);
         Personeel personeelslid2 = new Personeel("Jos", "Beckers", Functie.Zaal);
 
@@ -81,7 +81,7 @@ public class PersoneelControllerUnitTests {
     }
 
     @Test
-    public void givenPersoneel_whenGetPersoneel_thenReturnJsonPersoneel() throws Exception {
+    void givenPersoneel_whenGetPersoneel_thenReturnJsonPersoneel() throws Exception {
         Personeel personeel1 = new Personeel("Jan", "Polders", Functie.Zaal);
         Personeel personeel2 = new Personeel("Jef", "Mols", Functie.Zaal);
         Personeel personeel3 = new Personeel("Marlies", "Sjegers", Functie.Keuken);
