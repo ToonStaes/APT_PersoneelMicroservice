@@ -41,7 +41,5 @@ public class PersoneelController {
             personeelRepository.save(new Personeel("Toon", "Staes", Functie.Keuken));
             personeelRepository.save(new Personeel("Niels", "Verheyen", Functie.Zaal));
         }
-
-        System.out.println("Personeel test: " + personeelRepository.findAll().size());
     }
 }
