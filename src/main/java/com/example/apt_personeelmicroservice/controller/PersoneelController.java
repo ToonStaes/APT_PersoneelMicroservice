@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -40,33 +38,16 @@ public class PersoneelController {
     public void fillDB(){
         if(personeelRepository.count()==0){
             Personeel arne = new Personeel("Arne", "Hus", Functie.Keuken);
-            arne.setPersoneelsnummer(genereerPersoneelsnummer(arne));
+            arne.setPersoneelsnummer("K20220103AH");
             personeelRepository.save(arne);
 
             Personeel toon = new Personeel("Toon", "Staes", Functie.Keuken);
-            toon.setPersoneelsnummer(genereerPersoneelsnummer(toon));
+            toon.setPersoneelsnummer("K20220103TS");
             personeelRepository.save(toon);
 
             Personeel niels = new Personeel("Niels", "Verheyen", Functie.Zaal);
-            niels.setPersoneelsnummer(genereerPersoneelsnummer(niels));
+            niels.setPersoneelsnummer("Z20220103NV");
             personeelRepository.save(niels);
         }
-    }
-
-    private String genereerPersoneelsnummer(Personeel personeel) {
-        String personeelsnummerMaker;
-
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
-        Date date = new Date();
-        String datestring = formatter.format(date);
-
-        if (personeel.getFunctie() == Functie.Keuken){
-            personeelsnummerMaker = "K";
-        } else {
-            personeelsnummerMaker = "Z";
-        }
-
-        personeelsnummerMaker += datestring + personeel.getVoornaam().toUpperCase().charAt(0) + personeel.getAchternaam().toUpperCase().charAt(0);
-        return personeelsnummerMaker;
     }
 }
