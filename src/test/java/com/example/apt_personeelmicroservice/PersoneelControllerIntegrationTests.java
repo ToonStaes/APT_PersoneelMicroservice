@@ -42,12 +42,33 @@ class PersoneelControllerIntegrationTests {
         return formatter.format(date);
     }
 
+    private String genereerPersoneelsnummer(Personeel personeel) {
+        String personeelsnummerMaker;
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+        Date date = new Date();
+        String datestring = formatter.format(date);
+
+        if (personeel.getFunctie() == Functie.Keuken){
+            personeelsnummerMaker = "K";
+        } else {
+            personeelsnummerMaker = "Z";
+        }
+
+        personeelsnummerMaker += datestring + personeel.getVoornaam().toUpperCase().charAt(0) + personeel.getAchternaam().toUpperCase().charAt(0);
+        return personeelsnummerMaker;
+    }
+
     @BeforeEach
     public void BeforeAllTests(){
         personeelRepository.deleteAll();
+        personeel1.setPersoneelsnummer(genereerPersoneelsnummer(personeel1));
         personeelRepository.save(personeel1);
+        personeel2.setPersoneelsnummer(genereerPersoneelsnummer(personeel2));
         personeelRepository.save(personeel2);
+        personeel3.setPersoneelsnummer(genereerPersoneelsnummer(personeel3));
         personeelRepository.save(personeel3);
+        personeel4.setPersoneelsnummer(genereerPersoneelsnummer(personeel4));
         personeelRepository.save(personeel4);
     }
 

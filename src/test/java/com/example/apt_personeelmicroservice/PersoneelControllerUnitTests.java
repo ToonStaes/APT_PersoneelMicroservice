@@ -41,9 +41,27 @@ class PersoneelControllerUnitTests {
         return formatter.format(date);
     }
 
+    private String genereerPersoneelsnummer(Personeel personeel) {
+        String personeelsnummerMaker;
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+        Date date = new Date();
+        String datestring = formatter.format(date);
+
+        if (personeel.getFunctie() == Functie.Keuken){
+            personeelsnummerMaker = "K";
+        } else {
+            personeelsnummerMaker = "Z";
+        }
+
+        personeelsnummerMaker += datestring + personeel.getVoornaam().toUpperCase().charAt(0) + personeel.getAchternaam().toUpperCase().charAt(0);
+        return personeelsnummerMaker;
+    }
+
     @Test
     void givenPersoneel_whenGetPersoneelByPersoneelsnummer_thenReturnJsonPersoneel() throws Exception {
         Personeel personeelslid = new Personeel("Jan", "Polders", Functie.Zaal);
+        personeelslid.setPersoneelsnummer(genereerPersoneelsnummer(personeelslid));
 
         String personeelsnummer = "Z" + genereerDatestringVandaag() + "JP";
 
@@ -60,7 +78,9 @@ class PersoneelControllerUnitTests {
     @Test
     void givenPersoneel_whenGetPersoneelByFunctie_thenReturnJsonPersoneel() throws Exception {
         Personeel personeelslid1 = new Personeel("Marlies", "Sjegers", Functie.Zaal);
+        personeelslid1.setPersoneelsnummer(genereerPersoneelsnummer(personeelslid1));
         Personeel personeelslid2 = new Personeel("Jos", "Beckers", Functie.Zaal);
+        personeelslid2.setPersoneelsnummer(genereerPersoneelsnummer(personeelslid2));
 
         List<Personeel> personeelList = new ArrayList<>();
         personeelList.add(personeelslid1);
@@ -83,9 +103,13 @@ class PersoneelControllerUnitTests {
     @Test
     void givenPersoneel_whenGetPersoneel_thenReturnJsonPersoneel() throws Exception {
         Personeel personeel1 = new Personeel("Jan", "Polders", Functie.Zaal);
+        personeel1.setPersoneelsnummer(genereerPersoneelsnummer(personeel1));
         Personeel personeel2 = new Personeel("Jef", "Mols", Functie.Zaal);
+        personeel2.setPersoneelsnummer(genereerPersoneelsnummer(personeel2));
         Personeel personeel3 = new Personeel("Marlies", "Sjegers", Functie.Keuken);
+        personeel3.setPersoneelsnummer(genereerPersoneelsnummer(personeel3));
         Personeel personeel4 = new Personeel("Jos", "Beckers", Functie.Keuken);
+        personeel4.setPersoneelsnummer(genereerPersoneelsnummer(personeel4));
 
         List<Personeel> personeelList = new ArrayList<>();
         personeelList.add(personeel1);
