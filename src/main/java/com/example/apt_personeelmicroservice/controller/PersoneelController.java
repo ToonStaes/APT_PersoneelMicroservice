@@ -48,6 +48,14 @@ public class PersoneelController {
             Personeel niels = new Personeel("Niels", "Verheyen", Functie.Zaal);
             niels.setPersoneelsnummer("Z20220103NV");
             personeelRepository.save(niels);
+
+            Personeel bert = new Personeel("Bert", "Moons", Functie.Zaal);
+            bert.setPersoneelsnummer("Z20220104BM");
+            personeelRepository.save(bert);
+
+            Personeel lisa = new Personeel("Lisa", "Polders", Functie.Zaal);
+            lisa.setPersoneelsnummer("Z20220104LP");
+            personeelRepository.save(lisa);
         }
     }
 }
